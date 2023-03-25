@@ -1,3 +1,6 @@
+import { enviromentUrls } from "./eviroment-urls";
+
 export const environment = {
-  production: true
+  production: true,
+  httpUrls: enviromentUrls,
 };

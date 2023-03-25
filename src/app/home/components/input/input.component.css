@@ -1,0 +1,8 @@
+.no-input-body {
+  border-radius: 2px;
+  border: solid 1px gray;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

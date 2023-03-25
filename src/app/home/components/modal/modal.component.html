@@ -1,0 +1,67 @@
+<div class="col-8 modal container-center font">
+  <div class="box col-8">
+    <div class="col-12">
+      <h4 class="text-align-center letter">{{ labels.titleModal }}</h4>
+    </div>
+
+    <div class="container-center col-12" [formGroup]="updateForm">
+      <h5 class="no-margin container-center letter">{{ labels.nameInput }}</h5>
+      <input
+        class="margin-left-10"
+        name="name"
+        type="text"
+        placeholder="Nombre"
+        formControlName="name"
+      />
+    </div>
+    <div class="container-center col-12 mt-20-px" [formGroup]="updateForm">
+      <h5 class="no-margin container-center letter">{{ labels.imageInput }}</h5>
+      <input
+        class="margin-left-10"
+        name="name"
+        type="text"
+        placeholder="Nombre"
+        formControlName="image"
+      />
+    </div>
+    <div class="container-center col-8">
+      <h5 class="no-margin container-center letter">
+        {{ labels.defenseInput }}
+      </h5>
+      <input
+        name="defense"
+        type="range"
+        name="defense"
+        min="0"
+        max="100"
+        [(ngModel)]="defense"
+      />
+      <h6 class="letter">{{ defense }}</h6>
+    </div>
+    <div class="container-center col-8">
+      <h5 class="no-margin container-center letter">
+        {{ labels.attackInput }}
+      </h5>
+      <input
+        name="attack"
+        type="range"
+        name="attack"
+        min="0"
+        max="100"
+        [(ngModel)]="attack"
+      />
+      <h6 class="letter">{{ attack }}</h6>
+    </div>
+    <div class="container-center col-8 mt-20-px">
+      <app-button
+        [propertiesButton]="saveButton"
+        (click)="emitClose()"
+      ></app-button>
+      <app-button
+        class="margin-left-10"
+        [propertiesButton]="cancelButton"
+        (click)="cancelUpdate()"
+      ></app-button>
+    </div>
+  </div>
+</div>

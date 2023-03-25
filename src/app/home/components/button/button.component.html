@@ -1,0 +1,12 @@
+<div class="flex-row">
+  <div class="col-12">
+    <button
+      [disabled]="propertiesButton.disabled"
+      (click)="sendEvent()"
+      [ngStyle]="{ 'background-color': propertiesButton.color }"
+    >
+      <i class="icon-button" [ngStyle]="getIcon()"></i>
+      {{ propertiesButton.label }}
+    </button>
+  </div>
+</div>

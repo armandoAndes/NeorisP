@@ -1,0 +1,18 @@
+.icon-button {
+  height: 18px;
+  width: 18px;
+  background-image: url('/assets/buttons/add-outline.svg');
+  color: white;
+  bottom: 2px;
+  display: flex;
+  position: relative;
+  margin-right: 5px;
+}
+button{
+  color: white;
+  width: 100px;
+  height: 30px;
+  border-radius: 3px;
+  display: flex;
+  padding-top: 5px;
+}

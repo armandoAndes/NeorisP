@@ -1,0 +1,60 @@
+/* .as{
+  color: rgb(108, 51, 199);
+  background-image: url('assets/buttons/add-outline.svg');
+}
+ */
+.icon-search {
+  height: 25px;
+  width: 25px;
+  background-image: url("/assets/buttons/search-circle-outline.svg");
+  color: white;
+  display: block;
+  position: absolute;
+  margin-right: 5px;
+}
+.input-search {
+  height: 18px;
+  padding-left: 30px;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+}
+
+.image-pokemon {
+  height: 50px;
+  width: 50px;
+}
+.icon-edit {
+  height: 15px;
+  width: 15px;
+  background-image: url("/assets/buttons/pencil-outline.svg");
+  color: white;
+  display: block;
+  position: absolute;
+  margin-right: 5px;
+}
+.icon-delete {
+  height: 15px;
+  width: 15px;
+  background-image: url("/assets/buttons/trash-outline.svg");
+  color: white;
+  display: block;
+  position: absolute;
+  margin-right: 5px;
+}
+.action{
+  display: flex;
+  margin-top: -8px;
+}
+.border{
+  border-radius: 2px;
+  border: solid 2px gray;
+}
+

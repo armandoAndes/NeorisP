@@ -1,0 +1,117 @@
+<div class="flex-row font">
+  <div class="col-12">{{ labels.title }}</div>
+  <div class="col-6 mt-20-px">
+    <i class="icon-search"></i>
+    <input
+      class="input-search"
+      type="{{ inputSearch.type }}"
+      placeholder="{{ inputSearch.placeholder }}"
+      [(ngModel)]="searchPokemon"
+    />
+  </div>
+  <div class="col-6 mt-20-px container-right">
+    <app-button
+      [propertiesButton]="newButton"
+      (sendClick)="changeState()"
+    ></app-button>
+  </div>
+  <div class="col-12 mt-20-px">
+    <table>
+      <tr>
+        <th class="text-align-center" *ngFor="let item of labels.tableTitles">
+          {{ item }}
+        </th>
+      </tr>
+      <tr *ngFor="let pokemon of listPokemon | filterList : searchPokemon">
+        <td class="text-align-center">{{ pokemon.name }}</td>
+        <td class="text-align-center">
+          <img class="image-pokemon" src="{{ pokemon.image }}" alt="" />
+        </td>
+        <td class="text-align-center">{{ pokemon.attack }}</td>
+        <td class="text-align-center">{{ pokemon.defense }}</td>
+        <td>
+          <div class="action container-center">
+            <div class="col-2" (click)="editState(pokemon)">
+              <i class="icon-edit"></i>
+            </div>
+            <div class="col-2" (click)="deletePokemon(pokemon.id!.toString())">
+              <i class="icon-delete"></i>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div [hidden]="stateNew" class="col-12 border mt-20-px">
+      <h5 class="text-align-center">{{ labels.newPokemonTitle }}</h5>
+      <div class="col-12">
+        <div class="col-12 row">
+          <div class="col-6 row container-center" [formGroup]="createForm">
+            <h5 class="no-margin container-center">{{ labels.nameInput }}</h5>
+            <input
+              class="margin-left-10"
+              name="name"
+              type="{{ labels.name.type }}"
+              placeholder="{{ labels.name.placeholder }}"
+              formControlName="name"
+            />
+          </div>
+          <div class="row">
+            <h5 class="no-margin">{{ labels.attackInput }}</h5>
+            <input
+              name="attack"
+              type="range"
+              name="attack"
+              min="0"
+              max="100"
+              [(ngModel)]="attack"
+            />
+            {{ attack }}
+          </div>
+        </div>
+        <div class="col-12 row mt-20-px">
+          <div class="col-6 row container-center" [formGroup]="createForm">
+            <h5 class="no-margin">{{ labels.imageInput }}</h5>
+            <input
+              class="margin-left-10"
+              name="image"
+              type="{{ labels.image.type }}"
+              placeholder="{{ labels.image.placeholder }}"
+              formControlName="image"
+            />
+          </div>
+          <div class="row">
+            <h5 class="no-margin">{{ labels.defenseInput }}</h5>
+            <input
+              name="defense"
+              type="range"
+              name="defense"
+              min="0"
+              max="100"
+              [(ngModel)]="defense"
+            />
+            {{ defense }}
+          </div>
+        </div>
+        <div class="col-12 row mt-20-px container-center margin-bot-10">
+          <app-button
+            [propertiesButton]="saveButton"
+            [disabled]="createForm.invalid"
+            (sendClick)="createPokemon()"
+          ></app-button>
+          <app-button
+            class="margin-left-10"
+            [propertiesButton]="cancelButton"
+            (click)="reset()"
+          ></app-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-modal
+  #modal
+  [hidden]="!statePopUp"
+  [propertiesModal]="pokemonInit"
+  (sendUpdate)="editState($event)"
+  (cancel)="closeModal()"
+></app-modal>
