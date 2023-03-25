@@ -92,7 +92,10 @@
             {{ defense }}
           </div>
         </div>
-        <div class="col-12 row mt-20-px container-center margin-bot-10">
+        <div
+          class="col-12 row mt-20-px container-center margin-bot-10"
+          [formGroup]="createForm"
+        >
           <app-button
             [propertiesButton]="saveButton"
             [disabled]="createForm.invalid"

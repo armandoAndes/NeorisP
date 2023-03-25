@@ -83,21 +83,25 @@ export class HomeComponent implements OnInit {
     return await lastValueFrom(this.httpNeoris.getPokemonsById(idPokemon));
   }
   public async createPokemon(): Promise<void> {
-    try {
-      let pokemon: Pokemon = {
-        attack: Number(this.attack),
-        defense: Number(this.defense),
-        hp: 100,
-        image: this.createForm.get('image')?.value,
-        name: this.createForm.get('name')?.value,
-        type: CommonEnums.defaultType,
-        idAuthor: 1,
-      };
-      await lastValueFrom(this.httpNeoris.createPokemon(pokemon));
-      this.listPokemon = await this.getPokemons();
-      this.reset();
-    } catch (error) {
-      alert(error);
+    if (this.createForm.valid) {
+      try {
+        let pokemon: Pokemon = {
+          attack: Number(this.attack),
+          defense: Number(this.defense),
+          hp: 100,
+          image: this.createForm.get('image')?.value,
+          name: this.createForm.get('name')?.value,
+          type: CommonEnums.defaultType,
+          idAuthor: 1,
+        };
+        await lastValueFrom(this.httpNeoris.createPokemon(pokemon));
+        this.listPokemon = await this.getPokemons();
+        this.reset();
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      alert('Es necesario llenar los campos');
     }
   }
   public async updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
